@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_academy/question.dart';
 import 'package:trivia_academy/score_screen.dart';
+import 'package:trivia_academy/option_card.dart';
 
 class TriviaScreen extends StatefulWidget {
   @override
@@ -57,50 +58,39 @@ class _TriviaScreenState extends State<TriviaScreen> {
             child: ListView(
               children: [
                 // Widget da opção 1.
-                Container(
-                  margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.15),
-                        spreadRadius: 2,
-                        blurRadius: 3,
-                        offset: Offset(1, 3),
-                      ),
-                    ],
-                  ),
+                OptionCard(
+                  border: answer == 1
+                      ? Border.all(
+                          color: Color(0xffDA0175),
+                          style: BorderStyle.solid,
+                        )
+                      : null,
                   child: RadioListTile(
                     value: 1,
                     groupValue: answer,
+                    activeColor: Color(0xffDA0175),
                     title: Text(questionsList[index].option1),
                     onChanged: (int value) {
-                      setState(() {
-                        answer = value;
-                        enableButton = true;
-                      });
+                      setState(
+                        () {
+                          answer = value;
+                          enableButton = true;
+                        },
+                      );
                     },
                   ),
                 ),
                 // Widget da opção 2.
-                Container(
-                  margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.15),
-                        spreadRadius: 2,
-                        blurRadius: 3,
-                        offset: Offset(1, 3),
-                      ),
-                    ],
-                  ),
+                OptionCard(
+                  border: answer == 2
+                      ? Border.all(
+                          color: Color(0xffDA0175),
+                        )
+                      : null,
                   child: RadioListTile(
                     value: 2,
                     groupValue: answer,
+                    activeColor: Color(0xffDA0175),
                     title: Text(questionsList[index].option2),
                     onChanged: (int value) {
                       setState(() {
@@ -111,23 +101,16 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   ),
                 ),
                 // Widget da opção 3.
-                Container(
-                  margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.15),
-                        spreadRadius: 2,
-                        blurRadius: 3,
-                        offset: Offset(1, 3),
-                      ),
-                    ],
-                  ),
+                OptionCard(
+                  border: answer == 3
+                      ? Border.all(
+                          color: Color(0xffDA0175),
+                        )
+                      : null,
                   child: RadioListTile(
                     value: 3,
                     groupValue: answer,
+                    activeColor: Color(0xffDA0175),
                     title: Text(questionsList[index].option3),
                     onChanged: (int value) {
                       setState(() {
@@ -138,23 +121,16 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   ),
                 ),
                 // Widget da opção 4.
-                Container(
-                  margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.15),
-                        spreadRadius: 2,
-                        blurRadius: 3,
-                        offset: Offset(1, 3),
-                      ),
-                    ],
-                  ),
+                OptionCard(
+                  border: answer == 4
+                      ? Border.all(
+                          color: Color(0xffDA0175),
+                        )
+                      : null,
                   child: RadioListTile(
                     value: 4,
                     groupValue: answer,
+                    activeColor: Color(0xffDA0175),
                     title: Text(questionsList[index].option4),
                     onChanged: (int value) {
                       setState(() {
