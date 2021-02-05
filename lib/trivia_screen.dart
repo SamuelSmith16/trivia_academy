@@ -12,6 +12,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
   int score = 0;
   int index = 0;
   List<Question> questionsList = Question.getQuestionsList();
+  bool enableButton = false;
 
   void verifyResponse() {
     if (answer == questionsList[index].answer) {
@@ -77,6 +78,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
+                        enableButton = true;
                       });
                     },
                   ),
@@ -103,6 +105,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
+                        enableButton = true;
                       });
                     },
                   ),
@@ -129,6 +132,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
+                        enableButton = true;
                       });
                     },
                   ),
@@ -155,6 +159,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
+                        enableButton = true;
                       });
                     },
                   ),
@@ -178,27 +183,31 @@ class _TriviaScreenState extends State<TriviaScreen> {
             ),
             child: Center(
               child: FlatButton(
-                onPressed: () {
-                  verifyResponse();
-                  if (index < questionsList.length - 1) {
-                    setState(
-                      () {
-                        index = index + 1;
-                        answer = 0;
-                      },
-                    );
-                  } else {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ScoreScreen(
-                          maximun: questionsList.length,
-                          result: score,
-                        ),
-                      ),
-                    );
-                  }
-                },
+                onPressed: enableButton
+                    ? () {
+                        verifyResponse();
+                        if (index < questionsList.length - 1) {
+                          setState(
+                            () {
+                              index = index + 1;
+                              answer = 0;
+                              enableButton = false;
+                            },
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ScoreScreen(
+                                maximun: questionsList.length,
+                                result: score,
+                              ),
+                            ),
+                          );
+                        }
+                      }
+                    : null,
+                disabledColor: Color(0x35DA0175),
                 child: Text(
                   'Responder',
                   style: TextStyle(
