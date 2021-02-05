@@ -40,7 +40,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'PERGUNTA 1',
+                  'PERGUNTA ${index + 1}',
                   style: TextStyle(fontSize: 16),
                 ),
                 SizedBox(height: 16),
